@@ -28,7 +28,7 @@ export function LoginForm({
             <label htmlFor="password" className="text-base font-medium">Password</label>
             <a
               href="#"
-              className="ml-auto text-sm underline-offset-4 hover:underline"
+              className="!text-black ml-auto text-sm underline-offset-4 hover:underline"
             >
               Forgot your password?
             </a>
@@ -45,7 +45,7 @@ export function LoginForm({
       </div>
       <div className="text-center text-sm">
         Don&apos;t have an account?{" "}
-        <a href="#" className="underline underline-offset-4">
+        <a href="#" className="!text-black underline underline-offset-4">
           Sign up
         </a>
       </div>
