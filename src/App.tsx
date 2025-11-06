@@ -1,28 +1,33 @@
+import { Suspense, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import LoginPage from './app/login/page';
-import OAuthCallbackPage from './app/oauth/callback/page';
-import DashboardPage from './pages/DashboardPage';
-import BoardPage from './pages/BoardPage';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 import { PublicOnlyRoute } from './routes/PublicOnlyRoute';
+import PageLoader from './components/ui/page-loader';
+
+const LoginPage = lazy(async () => import('./app/login/page'));
+const OAuthCallbackPage = lazy(async () => import('./app/oauth/callback/page'));
+const DashboardPage = lazy(async () => import('./pages/DashboardPage'));
+const BoardPage = lazy(async () => import('./pages/BoardPage'));
 
 function App(): JSX.Element {
   return (
-    <Routes>
-      <Route element={<PublicOnlyRoute />}>
-        <Route path="/login" element={<LoginPage />} />
-      </Route>
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+        <Route element={<PublicOnlyRoute />}>
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
 
-      <Route path="/oauth/callback" element={<OAuthCallbackPage />} />
+        <Route path="/oauth/callback" element={<OAuthCallbackPage />} />
 
-      <Route element={<ProtectedRoute />}>
-        <Route path="/" element={<DashboardPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/boards/:boardId" element={<BoardPage />} />
-      </Route>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/boards/:boardId" element={<BoardPage />} />
+        </Route>
 
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Suspense>
   );
 }
 
