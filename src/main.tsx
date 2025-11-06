@@ -2,9 +2,10 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
-import App from './App.tsx';
 import { AuthProvider } from '@/features/auth/AuthProvider';
 import { APP_BASE_PATH } from '@/config/constants';
+import { WorkspaceDataProvider } from '@/features/workspaces/WorkspaceDataProvider';
+import App from './App.tsx';
 
 const rootElement = document.getElementById('root');
 
@@ -18,7 +19,9 @@ createRoot(rootElement).render(
   <StrictMode>
     <BrowserRouter basename={routerBasename}>
       <AuthProvider>
-        <App />
+        <WorkspaceDataProvider>
+          <App />
+        </WorkspaceDataProvider>
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>
