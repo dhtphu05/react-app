@@ -4,8 +4,8 @@ import { ProtectedRoute } from './routes/ProtectedRoute';
 import { PublicOnlyRoute } from './routes/PublicOnlyRoute';
 import PageLoader from './components/ui/page-loader';
 
-const LoginPage = lazy(async () => import('./app/login/page'));
-const OAuthCallbackPage = lazy(async () => import('./app/oauth/callback/page'));
+const LoginPage = lazy(async () => import('./pages/LoginPage'));
+const OAuthCallbackPage = lazy(async () => import('./pages/OAuthCallbackPage'));
 const DashboardPage = lazy(async () => import('./pages/DashboardPage'));
 const BoardPage = lazy(async () => import('./pages/BoardPage'));
 

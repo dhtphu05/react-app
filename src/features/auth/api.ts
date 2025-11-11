@@ -1,4 +1,4 @@
-import api from '@/app/api/axiosConfig';
+import api from '@/lib/api/axiosConfig';
 import type {
   ApiResponse,
   LoginResponse,
