@@ -5,8 +5,11 @@ import { CreateBoardDialog } from "@/shared/components/CreateBoardDialog";
 import { WorkspaceFilter } from "@/features/workspace/ui/workspace-filter";
 import { WorkspaceProvider } from "@/features/workspace/ui/workspace-context";
 import { WorkspaceDisplay } from "@/features/workspace/ui/workspace-display";
+import { WorkspaceProvider } from "@/features/workspace/shared/WorkspaceProvider";
 
 export function WorkspacePage() {
+    console.log("%c hehe" , "color:red");
+
     console.log("WorkspacePage rendered");
 
     const { workspaceId } = useParams<{ workspaceId: string }>();
