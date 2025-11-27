@@ -6,7 +6,7 @@ export type WorkspaceContextType = {
     searchQuery: string;
     sortBy: SortOption;
     viewMode: ViewMode;
-    boards: Board[]
+    boards: Board[];
 };
 
 export type WorkspaceDisplayContextType = {
@@ -16,14 +16,20 @@ export type WorkspaceDisplayContextType = {
 };
 
 export const WorkspaceContext = createContext<WorkspaceContextType>({
-    searchQuery: '',
-    sortBy: 'az',
-    viewMode: 'grid',
+    searchQuery: "",
+    sortBy: "recent",
+    viewMode: "grid",
     boards: [],
-})
+});
 
-export const WorkspaceDisplayContext = createContext<WorkspaceDisplayContextType>({
-    setSearchQuery: () => {},
-    setSortBy: () => {},
-    setViewMode: () => {},
-})
+export const WorkspaceSearchQueryContext = createContext("");
+export const WorkspaceSortByContext = createContext<SortOption>("recent");
+export const WorkspaceViewModeContext = createContext<ViewMode>("grid");
+export const WorkspaceBoardsContext = createContext<Board[]>([]);
+
+export const WorkspaceDisplayContext =
+    createContext<WorkspaceDisplayContextType>({
+        setSearchQuery: () => {},
+        setSortBy: () => {},
+        setViewMode: () => {},
+    });

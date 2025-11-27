@@ -2,7 +2,11 @@ import { Search, Plus, Kanban } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { Card, CardContent } from "@/shared/ui/card";
 import { BoardCard } from "@/features/dashboard/ui/boad-card";
-import { WorkspaceContext } from "../shared/context";
+import {
+    WorkspaceBoardsContext,
+    WorkspaceSearchQueryContext,
+    WorkspaceViewModeContext,
+} from "../shared/context";
 import { useContext } from "react";
 
 export function WorkspaceDisplay({
@@ -12,11 +16,9 @@ export function WorkspaceDisplay({
 }) {
     console.log("%cWorkspaceDisplay rendered", "color: yellow");
 
-    const {
-        searchQuery,
-        viewMode,
-        boards: filteredAndSortedBoards,
-    } = useContext(WorkspaceContext);
+    const searchQuery = useContext(WorkspaceSearchQueryContext);
+    const viewMode = useContext(WorkspaceViewModeContext);
+    const filteredAndSortedBoards = useContext(WorkspaceBoardsContext);
 
     return (
         <>
